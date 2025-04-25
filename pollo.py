@@ -118,6 +118,34 @@ for y in range(-250, 300, 100):
         lineas.penup()
         lineas.forward(30)
 
+# Función para dibujar casas
+def dibujar_casa(x, y):
+    casa = turtle.Turtle()
+    casa.hideturtle()
+    casa.penup()
+    casa.goto(x, y)
+    casa.color("brown")
+    casa.begin_fill()
+    # Dibujar la base de la casa
+    for _ in range(4):
+        casa.forward(50)
+        casa.right(90)
+    casa.end_fill()
+    
+    casa.goto(x + 25, y + 50)  # Colocar el techo
+    casa.begin_fill()
+    # Dibujar el techo triangular
+    for _ in range(3):
+        casa.forward(50)
+        casa.left(120)
+    casa.end_fill()
+
+# Dibujar casas a los lados de la carretera
+for i in range(-280, 300, 100):
+    if i != 0:  # Evitar colocar casas en el centro de la carretera
+        dibujar_casa(i, 200)  # Lado izquierdo
+        dibujar_casa(i, -250)  # Lado derecho
+
 # Sonido de colisión
 def sonido_colision():
     try:
@@ -175,4 +203,7 @@ while game_on:
 # Final
 print("¡Juego Terminado!")
 turtle.done()
+
+
+  
 
